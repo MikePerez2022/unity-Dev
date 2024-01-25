@@ -1,42 +1,90 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 
-public class Player : MonoBehaviour
+public class Player : MonoBehaviour, IDamagable
 {
 	[SerializeField] TMP_Text scoreText;
 	[SerializeField] FloatVariable health;
 	[SerializeField] PhysicsCharacterController characterController;
-    [Header("Events")]
-    [SerializeField] IntEvent scoreEvent;
-    [SerializeField] VoidEvent gameStartEvent;
 
-    private int score = 0;
+	[Header("Events")]
+	[SerializeField] IntEvent scoreEvent = default;
+	[SerializeField] FloatEvent timeEvent = default;
+	[SerializeField] FloatEvent healthEvent = default;
+	[SerializeField] Event gameStartEvent = default;
+	[SerializeField] Event playerDeadEvent = default;
+
+	private int score = 0;
 
 	public int Score 
-	{  
+	{ 
 		get { return score; } 
-		set 
-		{
-			score = value;
-            scoreText.text = score.ToString();
-            scoreEvent.RaisedEvent(score);
-        } 
+		set { 
+			score = value; 
+			scoreText.text = score.ToString();
+			scoreEvent.RaiseEvent(score);
+		} 
 	}
 
-    private void Start()
-    {
-		health.Value = 5.5f;
-    }
+	private void OnEnable()
+	{
+		gameStartEvent.Subscribe(OnStartGame);
+	}
 
-    public void AddPoints(int points)
+	private void Start()
+	{
+	}
+
+	public void AddPoints(int points)
 	{
 		Score += points;
 	}
 
-	private void startGame()
+	public void AddTime(float value)
+	{
+		timeEvent.RaiseEvent(value);
+	}
+
+	public void AddHealth(float value)
+	{
+		healthEvent.RaiseEvent(value);
+	}
+
+	private void OnStartGame()
 	{
 		characterController.enabled = true;
+	}
+	public void OnStopGame()//---------------------------
+	{
+		characterController.enabled = false;
+	}
+
+	public void Damage(float damage)
+	{
+		health.value -= damage;
+		if (health <= 0)
+		{
+			playerDeadEvent.RaiseEvent();
+		}
+	}
+
+	public void TakeDamage(float damage)
+	{
+		health.value -= damage;
+		if (health <= 0)
+		{
+			playerDeadEvent.RaiseEvent();
+		}
+	}
+
+	public void OnRespawn(GameObject respawn)
+	{
+		transform.position = respawn.transform.position;
+		transform.rotation = respawn.transform.rotation;
+		
+		characterController.Reset();
 	}
 }

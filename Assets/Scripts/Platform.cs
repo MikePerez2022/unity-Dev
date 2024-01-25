@@ -4,10 +4,14 @@ using UnityEngine;
 
 public class Platform : MonoBehaviour
 {
-    //[SerializeField] Animation animator;
+	[SerializeField] Animator animator;
+	[SerializeField] AudioSource source;
 
 	private void OnTriggerEnter(Collider other)
 	{
-		//animator.SetTrigger("Start");
+		source.Play();
+		animator.SetTrigger("Start");
 	}
+
+
 }

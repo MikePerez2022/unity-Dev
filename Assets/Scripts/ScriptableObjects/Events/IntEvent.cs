@@ -3,23 +3,41 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-[CreateAssetMenu(menuName ="Events/Int Event")]
+/// <summary>
+/// IntEvent - A simple observer pattern implementation using ScriptableObject.
+/// </summary>
+[CreateAssetMenu(menuName = "Events/Int Event")]
 public class IntEvent : ScriptableObjectBase
 {
-    public UnityAction<int> onEventRaised;
+	// Unity Actions allow you to dynamically call multiple functions.
+	// They are a simple way to implement delegates in scripting without
+	// needing to explicitly define them.
+	public UnityAction<int> onEventRaised;
 
-    public void RaisedEvent(int value)
-    {
-        onEventRaised?.Invoke(value);
-    }
+	/// <summary>
+	/// Raises the event with the specified integer value.
+	/// </summary>
+	/// <param name="value">The integer value to pass to subscribers.</param>
+	public void RaiseEvent(int value)
+	{
+		onEventRaised?.Invoke(value);
+	}
 
-    public void Subscribe(UnityAction<int> function)
-    {
-        onEventRaised += function;
-    }
+	/// <summary>
+	/// Subscribes an object to the event.
+	/// </summary>
+	/// <param name="listener">The object that wants to subscribe.</param>
+	public void Subscribe(UnityAction<int> listener)
+	{
+		onEventRaised += listener;
+	}
 
-    public void Unsubscribe(UnityAction<int> function)
-    {
-        onEventRaised -= function;
-    }
+	/// <summary>
+	/// Unsubscribes an object from the event.
+	/// </summary>
+	/// <param name="listener">The object that wants to unsubscribe.</param>
+	public void Unsubscribe(UnityAction<int> listener)
+	{
+		onEventRaised -= listener;
+	}
 }
