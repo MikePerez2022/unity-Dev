@@ -1,15 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.Splines;
+using Unity.Mathematics;
 
 public class PathFollower : MonoBehaviour
 {
-    [SerializeField] SplineContainer splineContainer;
-    [Range(0,40)] public float speed = 1;
-
-    float tdistance = 1; // distance along spline (0-1)
+	[SerializeField] SplineContainer splineContainer;
+	[Range(0, 40)] public float speed = 1;
+	[Range(0, 1)] public float tdistance = 0; // distance along spline (0-1)
 
     //public float speed { get; set; }
     public float length { get { return splineContainer.CalculateLength(); } }
@@ -21,7 +20,7 @@ public class PathFollower : MonoBehaviour
 
     void Update()
     {
-        distance += speed;
+        distance += speed * Time.deltaTime;
         UpdateTransform(math.frac(tdistance));
     }
 
