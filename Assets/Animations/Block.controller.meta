@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Animations/Block.controller.meta
 guid: abacbfcec68ae7948804bf63912061a0
+========
+guid: d66e4c6f0916d1c4ebdd55af4bda7aca
+>>>>>>>> 932ffe28483073c436ca708de00c8b0b1a882db7:Assets/Animations/Wall.controller.meta
 NativeFormatImporter:
   externalObjects: {}
   mainObjectFileID: 9100000

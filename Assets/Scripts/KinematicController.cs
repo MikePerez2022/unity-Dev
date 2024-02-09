@@ -8,7 +8,7 @@ public class KinematicController : MonoBehaviour
     [SerializeField] float maxDistance = 5;
 
 
-    void Update()
+	void Update()
     {
         Vector3 direction = Vector3.zero;
 
@@ -19,5 +19,11 @@ public class KinematicController : MonoBehaviour
         transform.localPosition += force;
 
         transform.localPosition = Vector3.ClampMagnitude(transform.localPosition, maxDistance);
-    }
+        Quaternion qyaw = Quaternion.AngleAxis(direction.x * 40, Vector3.up);
+        Quaternion qpitch = Quaternion.AngleAxis(-direction.x * 40, Vector3.right);
+
+        Quaternion rotation = qyaw * qpitch;
+
+        transform.localRotation = Quaternion.Slerp(transform.localRotation, rotation, 10 * Time.deltaTime);
+	}
 }
