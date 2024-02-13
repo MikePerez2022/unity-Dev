@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 3354212963575359399}
   - component: {fileID: 6399532380080530633}
   - component: {fileID: 7637627356654455130}
+  - component: {fileID: 9209204905004494456}
   - component: {fileID: 6196181760759045409}
   - component: {fileID: 1640783201523751739}
   - component: {fileID: 6309880431426213908}
@@ -138,6 +139,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
+--- !u!114 &9209204905004494456
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6458454897617295581}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4fd69f7319e814d4bbc62813ab29751c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tagName: Player
 --- !u!114 &6196181760759045409
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -151,7 +165,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ammoData: {fileID: 11400000, guid: 0017e4404f5ab8844878587f8772df91, type: 2}
-  action: {fileID: 0}
+  action: {fileID: 9209204905004494456}
 --- !u!135 &1640783201523751739
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -183,7 +197,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: b9aa0684739d6e446a939e9678721449, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 8ac8671fe8fa0a94b9a487fd18e348a8, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -229,7 +243,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 0.956
       inSlope: 0
       outSlope: 0
       tangentMode: 0

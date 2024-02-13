@@ -15,6 +15,8 @@ public class PlayerShip : MonoBehaviour, IDamagable
 	[SerializeField] private GameObject destroyPrefab;
 	[SerializeField] private GameObject hitPrefab;
 
+	public bool doubleDMG = false;
+
 	private void Start()
 	{
 		scoreEvent.Subscribe(AddPoints);
@@ -32,10 +34,13 @@ public class PlayerShip : MonoBehaviour, IDamagable
 		{
 			inventory.StopUse();
 		}
-		//path.speed = (Input.GetKey(KeyCode.Space)) ? 5 : 1;
-		//{
-		//	inventory.StopUse();
-		//}
+		path.speed = Input.GetKey(KeyCode.Space) ? 5 : 1;
+		if(Input.GetKey(KeyCode.Q) )
+		{
+			
+			inventory.Swap();
+			
+		}
 	}
 
 	public void AddPoints(int points)
@@ -47,6 +52,7 @@ public class PlayerShip : MonoBehaviour, IDamagable
 	public void ApplyDamage(float damage)
 	{
 		health.value -= damage;
+		Debug.Log(health.value);
 		if (health <= 0)
 		{
 			if (destroyPrefab != null)
@@ -67,5 +73,9 @@ public class PlayerShip : MonoBehaviour, IDamagable
 	{
 		health.value += Health;
 		health.value = Mathf.Min(health, 100);
+	}
+	public void ApplyDMGBoost()
+	{
+		doubleDMG = true;
 	}
 }

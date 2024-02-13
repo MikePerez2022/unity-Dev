@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public abstract class Ammo : Interactable
@@ -23,7 +24,7 @@ public abstract class Ammo : Interactable
 		// destroy game object
 		if (ammoData.destroyOnImpact)
 		{
-			Destroy(gameObject);
+			Destroy(this.gameObject);
 		}
 	}
 

@@ -35,7 +35,17 @@ public class COR : MonoBehaviour
             print("Hello");            
         }
         //yield return null;
-    }
+
+        //Group Project exaple for finish timer
+
+        //bool inEndRegion = true;
+		//while (inEndRegion)
+		//{
+		//	yield return new WaitForSeconds(time);
+        //    if (!inEndRegion) continue;
+		//	print("Hello");
+		//}
+	}
 
     IEnumerator StoryTime()
     {

@@ -7,11 +7,16 @@ public class HealthPickUp : MonoBehaviour
     [SerializeField] float health;
     [SerializeField] GameObject pickupPrefab;
 
+	private void Start()
+	{
+	}
+
 	private void OnTriggerEnter(Collider other)
 	{
 		if(other.gameObject.TryGetComponent(out PlayerShip player))
 		{
 			player.ApplyHealth(health);
+			Debug.Log(health);
 			if (pickupPrefab != null) Instantiate(pickupPrefab, transform.position, Quaternion.identity);
 			Destroy(gameObject);
 		}
