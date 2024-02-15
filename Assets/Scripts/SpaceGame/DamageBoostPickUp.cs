@@ -11,6 +11,7 @@ public class DamageBoostPickUp : MonoBehaviour
 
 	private void Start()
 	{
+		primary.damage = 10;
 	}
 
 	private void OnTriggerEnter(Collider other)

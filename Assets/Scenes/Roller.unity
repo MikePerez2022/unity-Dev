@@ -284,6 +284,7 @@ MonoBehaviour:
   timerUI: {fileID: 1348033819}
   healthUI: {fileID: 1776559598}
   health: {fileID: 11400000, guid: 8b4d1805a09740c499907118dadc4397, type: 2}
+  score: {fileID: 0}
   respawn: {fileID: 540168627}
   player: {fileID: 872249079}
   gameStartEvent: {fileID: 11400000, guid: 47d81e3108af12941973a7e5bbd37e44, type: 2}
@@ -620,7 +621,7 @@ PrefabInstance:
   m_SourcePrefab: {fileID: 100100000, guid: bb96c8d59898bd649a278459b2ebf732, type: 3}
 --- !u!4 &85368837 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 5291582296849377382, guid: bb96c8d59898bd649a278459b2ebf732, type: 3}
+  m_CorrespondingSourceObject: {fileID: 4331357278697617587, guid: bb96c8d59898bd649a278459b2ebf732, type: 3}
   m_PrefabInstance: {fileID: 85368836}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &93977937
@@ -1205,6 +1206,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Coin (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 3198971115147605970, guid: 7cce54fd0356ed14e9366de37afa857e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7244412392078038648, guid: 7cce54fd0356ed14e9366de37afa857e, type: 3}
       propertyPath: m_LocalPosition.x
       value: -2.02
@@ -1634,7 +1639,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &403187953
 Transform:
   m_ObjectHideFlags: 0
@@ -1978,7 +1983,7 @@ PrefabInstance:
   m_SourcePrefab: {fileID: 100100000, guid: bb96c8d59898bd649a278459b2ebf732, type: 3}
 --- !u!4 &515170921 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 5291582296849377382, guid: bb96c8d59898bd649a278459b2ebf732, type: 3}
+  m_CorrespondingSourceObject: {fileID: 4331357278697617587, guid: bb96c8d59898bd649a278459b2ebf732, type: 3}
   m_PrefabInstance: {fileID: 515170920}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &523309375
@@ -2048,7 +2053,7 @@ PrefabInstance:
   m_SourcePrefab: {fileID: 100100000, guid: bb96c8d59898bd649a278459b2ebf732, type: 3}
 --- !u!4 &523309376 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 5291582296849377382, guid: bb96c8d59898bd649a278459b2ebf732, type: 3}
+  m_CorrespondingSourceObject: {fileID: 4331357278697617587, guid: bb96c8d59898bd649a278459b2ebf732, type: 3}
   m_PrefabInstance: {fileID: 523309375}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &526733131
@@ -2317,7 +2322,7 @@ PrefabInstance:
   m_SourcePrefab: {fileID: 100100000, guid: bb96c8d59898bd649a278459b2ebf732, type: 3}
 --- !u!4 &549800230 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 5291582296849377382, guid: bb96c8d59898bd649a278459b2ebf732, type: 3}
+  m_CorrespondingSourceObject: {fileID: 4331357278697617587, guid: bb96c8d59898bd649a278459b2ebf732, type: 3}
   m_PrefabInstance: {fileID: 549800229}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &550453536
@@ -3190,7 +3195,7 @@ PrefabInstance:
   m_SourcePrefab: {fileID: 100100000, guid: bb96c8d59898bd649a278459b2ebf732, type: 3}
 --- !u!4 &745661330 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 5291582296849377382, guid: bb96c8d59898bd649a278459b2ebf732, type: 3}
+  m_CorrespondingSourceObject: {fileID: 4331357278697617587, guid: bb96c8d59898bd649a278459b2ebf732, type: 3}
   m_PrefabInstance: {fileID: 745661329}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &809115224
@@ -3283,7 +3288,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!54 &872249073
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -3634,7 +3639,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!82 &918010040
 AudioSource:
   m_ObjectHideFlags: 0
@@ -4346,7 +4351,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!65 &1192392162
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5404,6 +5409,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Coin (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 3198971115147605970, guid: 7cce54fd0356ed14e9366de37afa857e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4940852648675219448, guid: 7cce54fd0356ed14e9366de37afa857e, type: 3}
       propertyPath: m_Enabled
       value: 1
@@ -6031,7 +6040,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1743252025
 Transform:
   m_ObjectHideFlags: 0
@@ -6178,7 +6187,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1768409916
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7135,7 +7144,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &2114800585 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 5291582296849377382, guid: bb96c8d59898bd649a278459b2ebf732, type: 3}
+  m_CorrespondingSourceObject: {fileID: 4331357278697617587, guid: bb96c8d59898bd649a278459b2ebf732, type: 3}
   m_PrefabInstance: {fileID: 2000126704}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1731412573225703095
@@ -7149,6 +7158,10 @@ PrefabInstance:
     - target: {fileID: 3198971115147605970, guid: 7cce54fd0356ed14e9366de37afa857e, type: 3}
       propertyPath: m_Name
       value: Coin
+      objectReference: {fileID: 0}
+    - target: {fileID: 3198971115147605970, guid: 7cce54fd0356ed14e9366de37afa857e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7244412392078038648, guid: 7cce54fd0356ed14e9366de37afa857e, type: 3}
       propertyPath: m_LocalPosition.x

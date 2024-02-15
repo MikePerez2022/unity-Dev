@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 367045431575901993}
   - component: {fileID: 1946411936773076402}
   - component: {fileID: 5233854488256442223}
+  - component: {fileID: 2422882785654613970}
   m_Layer: 0
   m_Name: HP_Pickup
   m_TagString: Untagged
@@ -143,3 +144,15 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.6643234
   m_Center: {x: -0.00000029802322, y: 0.2519214, z: 0}
+--- !u!114 &2422882785654613970
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4149050866476098379}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07f1da51dc867df4d93d531a1a6d5cac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

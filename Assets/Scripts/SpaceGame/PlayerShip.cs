@@ -9,13 +9,16 @@ public class PlayerShip : MonoBehaviour, IDamagable
     //[SerializeField] private GameObject target;
     [SerializeField] private IntEvent scoreEvent;
     [SerializeField] private Inventory inventory;
-	[SerializeField] private IntVariable score;
-	[SerializeField] private FloatVariable health;
+	[SerializeField] public IntVariable score;
+	[SerializeField] public FloatVariable health;
 
 	[SerializeField] private GameObject destroyPrefab;
 	[SerializeField] private GameObject hitPrefab;
 
+	[SerializeField] private BoolEvent selected;
+
 	public bool doubleDMG = false;
+	public bool primary = true;
 
 	private void Start()
 	{
@@ -37,9 +40,9 @@ public class PlayerShip : MonoBehaviour, IDamagable
 		path.speed = Input.GetKey(KeyCode.Space) ? 5 : 1;
 		if(Input.GetKey(KeyCode.Q) )
 		{
-			
-			inventory.Swap();
-			
+
+			primary = inventory.Swap();
+			selected?.RaiseEvent(primary);
 		}
 	}
 

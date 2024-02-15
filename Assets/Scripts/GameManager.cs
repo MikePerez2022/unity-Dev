@@ -9,19 +9,17 @@ public class GameManager : Singleton<GameManager>
 	[SerializeField] GameObject titleUI;
 	[SerializeField] GameObject gameOverUI;
 	[SerializeField] GameObject WinUI;
-	[SerializeField] TMP_Text livesUI;
-	[SerializeField] TMP_Text timerUI;
+	[SerializeField] TMP_Text WeaponUI;
 	[SerializeField] Slider healthUI;
+	[SerializeField] TMP_Text ScoreUI;
 
 	[SerializeField] FloatVariable health;
 	[SerializeField] IntVariable score;
-	[SerializeField] GameObject respawn;
-	[SerializeField] Player player;
+	[SerializeField] PlayerShip player;
+	[SerializeField] PathFollower playerPath;
 
 	[Header("Events")]
 	[SerializeField] Event gameStartEvent;
-	[SerializeField] GameObjectEvent respawnEvent;
-	[SerializeField] FloatEvent gravEvent;
 
 	public enum State
 	{
@@ -33,28 +31,8 @@ public class GameManager : Singleton<GameManager>
 	}
 
 	private State state = State.TITLE;
-	private float timer = 0;
-	private int lives = 0;
-	private int Deaths = 0;
 	private bool win = false;
 
-	public int Lives { 
-		get { return lives; } 
-		set { 
-			lives = value; 
-			livesUI.text = "LIVES: " + lives.ToString(); 
-			} 
-	}
-
-	public float Timer
-	{
-		get { return timer; }
-		set
-		{
-			timer = value;
-			timerUI.text = string.Format("{0:F1}", timer);
-		}
-	}
 
 	void Update()
 	{
@@ -64,50 +42,41 @@ public class GameManager : Singleton<GameManager>
 				titleUI.SetActive(true);
 				gameOverUI.SetActive(false);
 				WinUI.SetActive(false);
-				Cursor.lockState = CursorLockMode.None;
-				Cursor.visible = true;
+				playerPath.speed = 0;
 				break;
 			case State.START_GAME:
 				titleUI.SetActive(false);
-				Timer = 60;
-				Lives = 3 - Deaths;
-				health.value = 100;
-				Cursor.lockState = CursorLockMode.Locked;
-				Cursor.visible = false;
+				playerPath.tdistance = 0;
+				playerPath.speed = 1;
+				player.health.value = 100;
 				gameStartEvent.RaiseEvent();
-				respawnEvent.RaiseEvent(respawn);
 				state = State.PLAY_GAME;
-				if (Deaths >= 4) state = State.GAME_OVER;
+				if (player.health.value <= 0) state = State.GAME_OVER;
 				if (win) state = State.WIN;
 				break;
 			case State.PLAY_GAME:
-				Timer = Timer - Time.deltaTime;
-				if (Timer <= 0)
-				{
-					state = State.GAME_OVER;
-				};
-				if(player.Score == 150) state = State.WIN;
+				if(playerPath.tdistance >= 1) state = State.WIN;
+				if (player.health.value <= 0) state = State.GAME_OVER;
 				break;
 			case State.WIN:
 				WinUI.SetActive(true);
 				titleUI.SetActive(false);
-				Cursor.lockState = CursorLockMode.None;
-				Cursor.visible = true;
 				gameStartEvent.RaiseEvent();
+				playerPath.speed = 0;
+				playerPath.tdistance = 1;
 				break;
 			case State.GAME_OVER:
 				gameOverUI.SetActive(true);
 				titleUI.SetActive(false);
-				Deaths = 4;
 				gameStartEvent.RaiseEvent();
-				Cursor.lockState = CursorLockMode.None;
-				Cursor.visible = true;
+				playerPath.speed = 0;
+				playerPath.tdistance = 0;
 				break;
 			default:
 				break;
 		}
 
-		healthUI.value = health / 100.0f;
+		healthUI.value = player.health / 100.0f;
 	}
 
 	public void OnStartGame()
@@ -120,24 +89,21 @@ public class GameManager : Singleton<GameManager>
 		state = State.TITLE;
 	}
 
-	public void OnLifeLost()
+	public void OnSwapWeapon()
 	{
-		Deaths++;
+		if (player.primary) WeaponUI.text = "Lazer";
+		else WeaponUI.text = "Rocket";
 	}
+
 
 	public void OnAddPoints(int points)
 	{
-		print(points);
-	}
-	public void OnAddTime(float value)
-	{
-		Timer += value;
-		print(value);
+		ScoreUI.text = player.score.value.ToString();
 	}
 
 	public void OnAddHealth(float value)
 	{
-		if (health.value <= 90) health.value += value;
+		if (player.health.value <= 90) player.health.value += value;
 		print(value);
 	}
 }

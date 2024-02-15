@@ -23,9 +23,11 @@ public class Inventory : MonoBehaviour
 		currentItem?.StopUse();
 	}
 
-	public void Swap()
+	public bool Swap()
 	{
 		currentItem = (currentItem == items[0]) ? items[1] : items[0];
 		currentItem?.Equip();
+
+		return (currentItem == items[0])? true : false;
 	}
 }

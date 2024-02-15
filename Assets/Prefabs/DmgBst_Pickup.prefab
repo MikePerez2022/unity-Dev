@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 8831890093797160502}
   - component: {fileID: 3917912994633770798}
   - component: {fileID: 2414844767466250501}
+  - component: {fileID: -5143093880478098024}
   m_Layer: 0
   m_Name: DmgBst_Pickup
   m_TagString: Untagged
@@ -143,3 +144,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   primary: {fileID: 11400000, guid: 2fb0fcc189584124699ec99d3a3a4d6e, type: 2}
   pickupPrefab: {fileID: 3677615991872805041, guid: 9f399926829284a4a9cc236c838efc95, type: 3}
+--- !u!114 &-5143093880478098024
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 352481508878221445}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07f1da51dc867df4d93d531a1a6d5cac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
